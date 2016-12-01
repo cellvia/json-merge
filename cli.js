@@ -13,12 +13,20 @@ function run() {
     var usage = 'Usage: json-merge <source1> [options] <source2> [options] [<source3>...]'
     usage += '\n\nOptions'
     usage += '\n--parse=<s>\t Parse the precedent source with <s>'
+    usage += '\n--parse=true\t Parse the precedent source with JSONStream'
+    usage += '\n--deep\t Merge with deep-extend strategy'
     console.error(usage)
   }
 
+  var options = {};
   var args = process.argv.splice(2).reduce(function (sources, current, cb) {
-    if(current.match(/^--parse=/)) {
-      sources.push({uri: sources.pop().uri, parse: current.substring(8)})
+    var parse;
+    if(current.match(/^--deep/)){
+      options.deep = true;
+    }else if(current.match(/^--parse=/)) {
+      parse = current.substring(8);
+      if(parse === "true") parse = true;
+	  sources.push({uri: sources.pop().uri, parse: parse })
     } else {
       sources.push({uri: current})
     }
@@ -26,7 +34,7 @@ function run() {
   }, [])
 
   var streams = args.map(getStream);
-  var merger = merge(streams)
+  var merger = merge(streams, options)
   merger.pipe(ldj.serialize()).pipe(process.stdout)
 }
 

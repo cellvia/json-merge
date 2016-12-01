@@ -1,6 +1,6 @@
 {
   "name": "json-merge",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "bin": {
     "json-merge": "cli.js"
   },
@@ -25,7 +25,7 @@
   "dependencies": {
     "JSONStream": "^0.8.4",
     "ldjson-stream": "^1.1.0",
-    "merge-object-streams": "0.0.3",
+    "merge-object-streams": "github:cellvia/merge-object-streams.git#deep-extend-option",
     "request": "^2.36.0"
   },
   "devDependencies": {},

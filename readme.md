@@ -13,6 +13,8 @@ Usage: json-merge <source1> [options] <source2> [options] [<source3>...]
 
 Options
 --parse=<s>	 Parse the precedent source with <s>
+--parse=true Parse the precedent source with JSONStream
+--deep		 Merge with deep-extend strategy
 ```
 
 sources can be one of 3 things:
