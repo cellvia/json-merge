@@ -22,6 +22,7 @@ sources can be one of 3 things:
 - paths to newline-delimited json data files
 - HTTP uris that return newline-delimited json data
 - JSONStream selector syntax to be used to parse stdin into a stream of JS objects
+- Any of the above in standard JSON form with `--parse=true`
 
 ## examples
 
